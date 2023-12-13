@@ -1,0 +1,13 @@
+#!/bin/bash
+read -p "Nhập số nguyên dương n: " n
+if [ $n -gt 0 ]; then
+    for ((i=1; i<=$n; i++)); do
+        site_dir="/var/www/site_$i"
+        index_file="$site_dir/index.html"
+        sudo mkdir -p "$site_dir"
+        echo "<html><body>TEST_$i</body></html>" | sudo tee "$index_file" > /dev/null
+        echo "Đã tạo $site_dir và $index_file"
+    done
+else
+    echo "Số nguyên dương không hợp lệ."
+fi
